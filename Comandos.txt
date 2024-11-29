@@ -1,0 +1,44 @@
+extensôes: django; mysSQL
+1-python -m venv venv
+	. ./venv/Scripts/Activate
+2-pip install django==4.2.16
+	Reinstalar o Django no Python Correto(Caso necessario) -> python -m pip install django
+3-pip freeze > requirements.txt
+4-django-admin startproject NOMEPROJETO .
+5-django-admin startapp udemy
+6-Configuração:
+	-add o nome do projeto no settings: 'udemy.apps.UdemyConfig',.
+	-add o templates em DIRS:'DIRS': ['templates'],
+	Isso indica que dentro da nossa aplicação iremos ter um diretorio chamado templates
+	-editar "pt-br" e TIME_ZONE = "America/Fortaleza"
+7-Configurar o arquivo urls do projeto:
+	from django.urls import path, include
+	urlpatterns = [ path('', include('APLICACAO.urls')),]
+8-Criar o arquivo urls na aplicação.
+	from django.urls import path
+	from . import views
+9-Definir as models.
+10-python manage.py makemigrations
+	Comando para criar um arquivo de migração (todas as aplicações do projeto e todos os modelos) dentro da apalicação.
+11-python manage.py migrate
+  	Comando para aplicar as migrações criadas.
+12-python manage.py createsuperuser
+	criação de usuário no painel administrativo.
+13-Configurar o arquivo admin.py da aplicação
+	Ex.: class ClienteAdmin(admin.ModelAdmin):
+                list_display = ('nome', 'sobrenome', 'email')
+             admin.site.register(cliente, ClienteAdmin)
+14-Comandos shell
+	python manage.py shell
+	
+	from udemy.models import Produto
+	dir(Produto) ->Acessa os atributos
+
+	produto = Produto(nome='game2', preco='2', estoque='3')
+	p.save()
+	cliente.id
+	
+	dir(Produto.objects)
+	produtos = Produto.objetos.all()  ou Produto.objetos.count Produto.objetos.first Produto.objetos.fiilter(id=1)
+	for produto in produtos:
+	    print(produto)

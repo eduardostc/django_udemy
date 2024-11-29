@@ -1,0 +1,29 @@
+{% block content %}
+        <h1>Lista de Produtos</h1>
+
+        {% if produtos %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Preco</th>
+                    <th scope="col">Estoque</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for p in produtos %}
+                        <tr>
+                            <th scope="row">{{ p.pk }}</th>
+                            <td><a href="{% url 'produto' p.id  %}">{{ p.nome  }}</a></td>
+                            <td>{{ p.preco }}</td>
+                            <td>{{ p.estoque }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          {% else %}
+            <p>Não há produtos cadastradas</p>
+          {% endif %}
+          
+{% endblock content %}
