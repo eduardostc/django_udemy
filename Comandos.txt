@@ -42,3 +42,9 @@ extensôes: django; mysSQL
 	produtos = Produto.objetos.all()  ou Produto.objetos.count Produto.objetos.first Produto.objetos.fiilter(id=1)
 	for produto in produtos:
 	    print(produto)
+15-Voltando ao setting
+	STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Usado durante a produção
+	obs.: Quando o projeto da em produção irão procurar o arquivos estaticos nesse diretorio e não mais no STATIC_URL de cada app.
+16-python manage.py collectsatic
+	Comando para migrar os arquivos staticos para staticfiles para quando a aplicação estiver em produção, mostrar os arquivos staticos.
+	obs.: Porém esse servidor do django (http://127.0.0.1:8000/) não consegue mostrar em ambiente de produção

@@ -1,29 +1,48 @@
-{% block content %}
-        <h1>Lista de Produtos</h1>
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css'%}" />
+</head>
+<body>
+    {% block content %}
+    <h1>Lista de Produtos</h1>
+    <img src="{% static 'images/Django.jpg'%}" alt="" />
 
-        {% if produtos %}
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Produto</th>
-                    <th scope="col">Preco</th>
-                    <th scope="col">Estoque</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {% for p in produtos %}
-                        <tr>
-                            <th scope="row">{{ p.pk }}</th>
-                            <td><a href="{% url 'produto' p.id  %}">{{ p.nome  }}</a></td>
-                            <td>{{ p.preco }}</td>
-                            <td>{{ p.estoque }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-          {% else %}
-            <p>Não há produtos cadastradas</p>
-          {% endif %}
-          
+    {% if produtos %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Preco</th>
+                <th scope="col">Estoque</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for p in produtos %}
+                    <tr>
+                        <th scope="row">{{ p.pk }}</th>
+                        <td><a href="{% url 'produto' p.id  %}">{{ p.nome  }}</a></td>
+                        <td>{{ p.preco }}</td>
+                        <td>{{ p.estoque }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      {% else %}
+        <p>Não há produtos cadastradas</p>
+      {% endif %}
+      
 {% endblock content %}
+
+<button onclick="teste();">Clique</button>
+<script type="text/javascript" src={% static 'js/script.js' %}></script>
+    
+</body>
+</html>
+
+
